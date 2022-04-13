@@ -20,7 +20,13 @@ window.onload = () => {
     const buttonNew = document.createElement("button");
     buttonNew.innerText = "Get Cat";
     document.body.append(buttonNew);
-    buttonNew.addEventListener("click", createMainContent)
+    buttonNew.addEventListener("click", () => {
+        createMainContent();
+        count = 0;
+        score.innerText = `Popularity Score: ${count}`
+    })
+
+
 
     const score = document.createElement('h4');
     document.body.append(score)
@@ -45,4 +51,25 @@ window.onload = () => {
         count--;
         score.innerText = `Popularity Score: ${count}`
     }
+
+    const comments = document.createElement("h4")
+    comments.innerText = "Comments:"
+    document.body.append(comments)
+
+    const input = document.createElement("input")
+    const value = input.value
+    input.setAttribute("placeholder",'add a comment')
+    document.body.append(input)
+
+    const buttonSubmit = document.createElement("button")
+    buttonSubmit.innerText = "Submit"
+    document.body.append(buttonSubmit)
+
+    const commentList = document.createElement("ul")
+    commentList.style.border = "1px solid black"
+    commentList.style.width = "400px"
+    commentList.style.height = "200px"
+    document.body.append(commentList)
+
+    
 };
