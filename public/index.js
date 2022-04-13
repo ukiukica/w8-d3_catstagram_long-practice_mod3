@@ -15,6 +15,8 @@ window.onload = () => {
     initializePage();
     createTitle();
 
+
+
     let count = 0;
 
     const buttonNew = document.createElement("button");
@@ -32,14 +34,17 @@ window.onload = () => {
     document.body.append(score)
     score.innerText = `Popularity Score: ${count}`
 
+    const buttonDiv = document.createElement('div');
+    document.body.append(buttonDiv)
+
     const buttonUp = document.createElement("button");
     buttonUp.innerText = "Upvote";
-    document.body.append(buttonUp);
+    buttonDiv.append(buttonUp);
     buttonUp.addEventListener("click", upvote)
 
     const buttonDown = document.createElement("button");
     buttonDown.innerText = "Downvote";
-    document.body.append(buttonDown);
+    buttonDiv.append(buttonDown);
     buttonDown.addEventListener("click", downvote)
 
     function upvote() {
@@ -52,24 +57,49 @@ window.onload = () => {
         score.innerText = `Popularity Score: ${count}`
     }
 
-    const comments = document.createElement("h4")
+    const commentDiv = document.createElement('div');
+    document.body.append(commentDiv)
+
+    const comments = document.createElement("span")
     comments.innerText = "Comments:"
-    document.body.append(comments)
+    commentDiv.append(comments)
 
     const input = document.createElement("input")
-    const value = input.value
-    input.setAttribute("placeholder",'add a comment')
-    document.body.append(input)
+    // const value = input.value;
+    input.setAttribute("placeholder", 'add a comment')
+    commentDiv.append(input)
 
     const buttonSubmit = document.createElement("button")
     buttonSubmit.innerText = "Submit"
-    document.body.append(buttonSubmit)
+    commentDiv.append(buttonSubmit)
 
     const commentList = document.createElement("ul")
     commentList.style.border = "1px solid black"
     commentList.style.width = "400px"
     commentList.style.height = "200px"
+    commentList.style.listStyle = "none"
     document.body.append(commentList)
 
-    
+    // function addComment (value) {
+    //     const newLi = document.createElement("li")
+    //     newLi.innerText = value;
+    //     commentList.append(newLi)
+    // }
+
+    buttonSubmit.addEventListener("click", () => {
+        const newLi = document.createElement("li")
+        let value = input.value;
+        newLi.innerText = value;
+        commentList.append(newLi);
+        input.value = "";
+    })
+
+    buttonDiv.style.margin = "5px 0px";
+    buttonUp.style.marginRight = "5px"
+
+    commentDiv.style.margin = "5px 0px";
 };
+document.body.style.display = "flex"
+document.body.style.flexDirection = "column"
+document.body.style.alignItems = "center"
+document.body.style.marginTop = "60px"
