@@ -1,4 +1,4 @@
-import { createMainContent } from './main.js';
+import { createMainContent, createTitle } from './main.js';
 
 const initializePage = () => {
     // Create container
@@ -13,5 +13,10 @@ const initializePage = () => {
 
 window.onload = () => {
     initializePage();
-    createMainContent();
+    createTitle();
+    const buttonNew = document.createElement("button");
+    buttonNew.innerText = "Get Cat";
+    document.body.append(buttonNew);
+    buttonNew.addEventListener("click", createMainContent)
+
 };
